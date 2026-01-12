@@ -1,0 +1,22 @@
+title: McClintock Lab
+description: Ocean Software Solutions - Marine Assessment and Planning Technology
+url: "https://mcclintock-lab.github.io"
+baseurl: "/home"
+
+# Build settings
+markdown: kramdown
+theme: minima
+
+# Collections
+collections:
+  posts:
+    output: true
+    permalink: /blog/:year/:month/:day/:title/
+
+# Defaults
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
