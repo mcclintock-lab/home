@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog - McClintock Lab</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --ocean-deep: #0a4d68;
+            --ocean-medium: #088395;
+            --ocean-light: #05bfdb;
+            --sand: #f4f4f4;
+            --white: #ffffff;
+            --text-dark: #1a1a1a;
+            --text-medium: #4a4a4a;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background: var(--sand);
+        }
+        
+        nav {
+            background: var(--white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--ocean-deep);
+            text-decoration: none;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+        
+        .nav-links a {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--ocean-medium);
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        .page-header {
+            background: linear-gradient(135deg, var(--ocean-deep) 0%, var(--ocean-medium) 100%);
+            color: var(--white);
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+        
+        .page-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .page-header p {
+            font-size: 1.2rem;
+            opacity: 0.95;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+        
+        .blog-post {
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .blog-post:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 30px rgba(0,0,0,0.15);
+        }
+        
+        .blog-post-meta {
+            color: var(--ocean-medium);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        
+        .blog-post h2 {
+            font-size: 1.75rem;
+            color: var(--ocean-deep);
+            margin-bottom: 1rem;
+        }
+        
+        .blog-post h2 a {
+            color: var(--ocean-deep);
+            text-decoration: none;
+        }
+        
+        .blog-post h2 a:hover {
+            color: var(--ocean-medium);
+        }
+        
+        .blog-post p {
+            color: var(--text-medium);
+            line-height: 1.7;
+            margin-bottom: 1rem;
+        }
+        
+        .read-more {
+            color: var(--ocean-medium);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .read-more:hover {
+            text-decoration: underline;
+        }
+        
+        footer {
+            background: var(--ocean-deep);
+            color: var(--white);
+            padding: 3rem 2rem;
+            margin-top: 4rem;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .footer-content p {
+            opacity: 0.9;
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--white);
+                flex-direction: column;
+                padding: 1rem 2rem;
+                box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .page-header h1 {
+                font-size: 2rem;
+            }
+            
+            .blog-post {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="logo">McClintock Lab</a>
+            <button class="mobile-menu-btn" onclick="toggleMenu()">☰</button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="about.html">About</a></li>
+                <li><a href="team.html">Team</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="blog.html" class="active">Blog</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="page-header">
+        <h1>Lab Blog</h1>
+        <p>Updates, insights, and stories from the McClintock Lab</p>
+    </section>
+
+    <div class="container">
+        <!-- Example blog post - you can duplicate this structure for each post -->
+        <article class="blog-post">
+            <div class="blog-post-meta">January 15, 2026</div>
+            <h2><a href="posts/welcome.html">Welcome to the New McClintock Lab Website</a></h2>
+            <p>We're excited to launch our new website! Built on GitHub Pages, this platform will serve as a hub for sharing updates about our ocean planning tools, announcing new features, and connecting with the marine spatial planning community...</p>
+            <a href="posts/welcome.html" class="read-more">Read more →</a>
+        </article>
+        
+        <!-- Add more blog posts here following the same structure -->
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2026 McClintock Lab. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            const navLinks = document.getElementById('navLinks');
+            navLinks.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>
