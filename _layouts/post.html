@@ -1,49 +1,290 @@
----
-layout: post
-title: "Welcome to the New McClintock Lab Website"
-date: 2026-01-15
-author: McClintock Lab Team
----
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ page.title }} - McClintock Lab Blog</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --ocean-deep: #0a4d68;
+            --ocean-medium: #088395;
+            --ocean-light: #05bfdb;
+            --sand: #f4f4f4;
+            --white: #ffffff;
+            --text-dark: #1a1a1a;
+            --text-medium: #4a4a4a;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background: var(--sand);
+        }
+        
+        nav {
+            background: var(--white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--ocean-deep);
+            text-decoration: none;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+        
+        .nav-links a {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--ocean-medium);
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+        
+        article {
+            background: var(--white);
+            padding: 3rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+        
+        .post-meta {
+            color: var(--ocean-medium);
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+        
+        article h1 {
+            color: var(--ocean-deep);
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            line-height: 1.2;
+        }
+        
+        article h2 {
+            color: var(--ocean-deep);
+            font-size: 1.75rem;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+        
+        article h3 {
+            color: var(--ocean-medium);
+            font-size: 1.35rem;
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
+        }
+        
+        article p {
+            color: var(--text-medium);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+        
+        article ul, article ol {
+            color: var(--text-medium);
+            line-height: 1.8;
+            margin-left: 2rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        article li {
+            margin-bottom: 0.5rem;
+        }
+        
+        article a {
+            color: var(--ocean-medium);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        article a:hover {
+            text-decoration: underline;
+        }
+        
+        article code {
+            background: var(--sand);
+            padding: 0.2rem 0.4rem;
+            border-radius: 3px;
+            font-size: 0.9em;
+            font-family: 'Courier New', monospace;
+        }
+        
+        article pre {
+            background: var(--text-dark);
+            color: var(--white);
+            padding: 1.5rem;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin-bottom: 1.5rem;
+        }
+        
+        article pre code {
+            background: none;
+            padding: 0;
+            color: var(--white);
+        }
+        
+        article blockquote {
+            border-left: 4px solid var(--ocean-medium);
+            padding-left: 1.5rem;
+            margin: 1.5rem 0;
+            color: var(--text-medium);
+            font-style: italic;
+        }
+        
+        article img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+        }
+        
+        .back-link {
+            display: inline-block;
+            margin-top: 2rem;
+            padding: 0.75rem 1.5rem;
+            background: var(--sand);
+            color: var(--ocean-deep);
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 500;
+            transition: background 0.3s;
+        }
+        
+        .back-link:hover {
+            background: #e8e8e8;
+        }
+        
+        footer {
+            background: var(--ocean-deep);
+            color: var(--white);
+            padding: 3rem 2rem;
+            margin-top: 4rem;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .footer-content p {
+            opacity: 0.9;
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--white);
+                flex-direction: column;
+                padding: 1rem 2rem;
+                box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            article {
+                padding: 2rem;
+            }
+            
+            article h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <a href="{{ site.baseurl }}/" class="logo">McClintock Lab</a>
+            <button class="mobile-menu-btn" onclick="toggleMenu()">☰</button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="{{ site.baseurl }}/about.html">About</a></li>
+                <li><a href="{{ site.baseurl }}/team.html">Team</a></li>
+                <li><a href="{{ site.baseurl }}/projects.html">Projects</a></li>
+                <li><a href="{{ site.baseurl }}/blog.html" class="active">Blog</a></li>
+                <li><a href="{{ site.baseurl }}/contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
 
-We're excited to launch our new website! Built on GitHub Pages with Jekyll, this platform will serve as a hub for sharing updates about our ocean planning tools, announcing new features, and connecting with the marine spatial planning community.
+    <div class="container">
+        <article>
+            <div class="post-meta">
+                {{ page.date | date: "%B %d, %Y" }}
+                {% if page.author %} • {{ page.author }}{% endif %}
+            </div>
+            <h1>{{ page.title }}</h1>
+            {{ content }}
+            <a href="{{ site.baseurl }}/blog.html" class="back-link">← Back to Blog</a>
+        </article>
+    </div>
 
-## What's New
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2026 McClintock Lab. All rights reserved.</p>
+        </div>
+    </footer>
 
-Our new site features:
-
-- **Improved Navigation**: Clean, modern design that works seamlessly on mobile and desktop
-- **Detailed Project Information**: In-depth pages for SeaSketch, eCatch, and SeaMonitor
-- **Team Profiles**: Meet the people behind our ocean software solutions
-- **This Blog**: A space for sharing updates, insights, and stories
-
-## Why We Built This
-
-For years, our Squarespace site served us well, but as our tools and community have grown, we needed a platform that offered:
-
-- **Better Performance**: Static site hosting on GitHub Pages is fast and reliable
-- **Version Control**: All our content is now version-controlled with Git
-- **Easier Updates**: Markdown-based blog posts are simple to write and maintain
-- **Cost Effectiveness**: GitHub Pages hosting is free for open source projects
-- **Integration**: Seamless connection with our existing GitHub repositories
-
-## What to Expect
-
-We'll be using this blog to share:
-
-- **Product Updates**: New features and improvements to SeaSketch, eCatch, and SeaMonitor
-- **Case Studies**: Real-world applications of our tools in marine planning initiatives
-- **Technical Insights**: Behind-the-scenes looks at how we build our software
-- **Community Highlights**: Stories from the organizations and individuals using our tools
-- **Ocean Planning Resources**: Useful information for marine spatial planning practitioners
-
-## Looking Forward
-
-The ocean planning community has been incredibly supportive over the years, and we're grateful for the partnerships that make our work possible. This new website is just one step in our ongoing commitment to creating accessible, powerful tools for ocean stewardship.
-
-We're always looking for ways to improve. If you have feedback about the new site or ideas for blog topics you'd like to see, please [get in touch](/contact.html).
-
-Stay tuned for more updates, and thank you for being part of our community!
-
----
-
-*Have questions or want to learn more about our tools? Visit our [Projects](/projects.html) page or [contact us](/contact.html).*
+    <script>
+        function toggleMenu() {
+            const navLinks = document.getElementById('navLinks');
+            navLinks.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>
