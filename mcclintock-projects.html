@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects - McClintock Lab</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --ocean-deep: #0a4d68;
+            --ocean-medium: #088395;
+            --ocean-light: #05bfdb;
+            --sand: #f4f4f4;
+            --white: #ffffff;
+            --text-dark: #1a1a1a;
+            --text-medium: #4a4a4a;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background: var(--sand);
+        }
+        
+        /* Navigation */
+        nav {
+            background: var(--white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--ocean-deep);
+            text-decoration: none;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+        
+        .nav-links a {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--ocean-medium);
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        /* Page Header */
+        .page-header {
+            background: linear-gradient(135deg, var(--ocean-deep) 0%, var(--ocean-medium) 100%);
+            color: var(--white);
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+        
+        .page-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .page-header p {
+            font-size: 1.2rem;
+            opacity: 0.95;
+        }
+        
+        /* Main Content */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+        
+        .project {
+            background: var(--white);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            margin-bottom: 3rem;
+        }
+        
+        .project-header {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 0;
+        }
+        
+        .project-image {
+            width: 100%;
+            height: 300px;
+            background: var(--sand);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: var(--ocean-medium);
+        }
+        
+        .project-intro {
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .project-intro h2 {
+            font-size: 2rem;
+            color: var(--ocean-deep);
+            margin-bottom: 1rem;
+        }
+        
+        .project-intro p {
+            color: var(--text-medium);
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+        
+        .project-details {
+            padding: 2rem;
+            border-top: 2px solid var(--sand);
+        }
+        
+        .project-details h3 {
+            font-size: 1.25rem;
+            color: var(--ocean-deep);
+            margin-bottom: 1rem;
+        }
+        
+        .project-details p {
+            color: var(--text-medium);
+            line-height: 1.7;
+            margin-bottom: 1rem;
+        }
+        
+        .project-details ul {
+            color: var(--text-medium);
+            line-height: 1.7;
+            margin-left: 2rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .project-details li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            background: var(--ocean-medium);
+            color: var(--white);
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 500;
+            transition: background 0.3s;
+            margin-top: 1rem;
+        }
+        
+        .btn:hover {
+            background: var(--ocean-deep);
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--ocean-deep);
+            color: var(--white);
+            padding: 3rem 2rem;
+            margin-top: 4rem;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .footer-content p {
+            opacity: 0.9;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--white);
+                flex-direction: column;
+                padding: 1rem 2rem;
+                box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .page-header h1 {
+                font-size: 2rem;
+            }
+            
+            .project-header {
+                grid-template-columns: 1fr;
+            }
+            
+            .project-image {
+                height: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="logo">McClintock Lab</a>
+            <button class="mobile-menu-btn" onclick="toggleMenu()">☰</button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="about.html">About</a></li>
+                <li><a href="team.html">Team</a></li>
+                <li><a href="projects.html" class="active">Projects</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="page-header">
+        <h1>Our Projects</h1>
+        <p>Web-based tools for ocean planning and management</p>
+    </section>
+
+    <div class="container">
+        <!-- SeaSketch -->
+        <div class="project">
+            <div class="project-header">
+                <div class="project-image">🗺️</div>
+                <div class="project-intro">
+                    <h2>SeaSketch</h2>
+                    <p>Participatory marine spatial planning software that democratizes access to sophisticated GIS tools, enabling communities worldwide to collaborate on ocean management decisions.</p>
+                    <a href="http://www.seasketch.org" class="btn" target="_blank">Visit SeaSketch →</a>
+                </div>
+            </div>
+            <div class="project-details">
+                <h3>About SeaSketch</h3>
+                <p>SeaSketch puts powerful tools into the hands of ocean planners, stakeholders and the public that were once limited to GIS professionals, enabling participatory marine spatial planning processes that are closely tied to the relevant science and information.</p>
+                
+                <p>SeaSketch is being used around the globe in small agency teams and large community-driven initiatives to make better management decisions every day. The platform enables users to:</p>
+                
+                <ul>
+                    <li>Create and share interactive maps of ocean uses and resources</li>
+                    <li>Collaborate on marine spatial plans with stakeholders</li>
+                    <li>Analyze spatial relationships and conflicts between different ocean uses</li>
+                    <li>Incorporate scientific data into planning decisions</li>
+                    <li>Facilitate public participation in ocean planning processes</li>
+                </ul>
+                
+                <p>From small coastal communities to international conservation initiatives, SeaSketch has helped manage millions of square kilometers of ocean, balancing conservation with sustainable use.</p>
+            </div>
+        </div>
+
+        <!-- eCatch -->
+        <div class="project">
+            <div class="project-header">
+                <div class="project-image">🎣</div>
+                <div class="project-intro">
+                    <h2>eCatch</h2>
+                    <p>A simple, user-friendly tool that enables fishermen to collect, map, and share their fishing data, supporting adaptive fisheries management and sustainable practices.</p>
+                    <a href="http://www.ecatch.org" class="btn" target="_blank">Visit eCatch →</a>
+                </div>
+            </div>
+            <div class="project-details">
+                <h3>About eCatch</h3>
+                <p>eCatch is a tool developed in collaboration with The Nature Conservancy that provides a simple way for fishermen to collect, map and share their fishing information. It evolved from The Conservancy's work in Morro Bay, California.</p>
+                
+                <p>In that project, TNC quickly realized that one of the most difficult aspects of fisheries management is the collection of good data, particularly location data, in a manner that would allow for in-season adaptive management.</p>
+                
+                <p>Key features include:</p>
+                
+                <ul>
+                    <li>Easy-to-use mobile interface for recording catch data</li>
+                    <li>GPS-based location tracking for fishing activities</li>
+                    <li>Real-time data visualization and reporting</li>
+                    <li>Privacy controls to protect sensitive fishing location information</li>
+                    <li>Integration with fisheries management systems</li>
+                </ul>
+                
+                <p>By making it easy for fishermen to share their knowledge and data, eCatch helps create the information foundation needed for effective, adaptive fisheries management.</p>
+            </div>
+        </div>
+
+        <!-- SeaMonitor -->
+        <div class="project">
+            <div class="project-header">
+                <div class="project-image">📊</div>
+                <div class="project-intro">
+                    <h2>SeaMonitor</h2>
+                    <p>An integrated platform for managing the complete lifecycle of marine ecological monitoring data, from collection to analysis to sharing.</p>
+                    <a href="http://seamonitor.org" class="btn" target="_blank">Visit SeaMonitor →</a>
+                </div>
+            </div>
+            <div class="project-details">
+                <h3>About SeaMonitor</h3>
+                <p>Sea Monitor is our vision for a software service that would dramatically improve the collection, visualization, and sharing of marine ecological monitoring and assessment data.</p>
+                
+                <p>By managing the entire life-cycle of these data in a single open platform, higher quality data could be more easily shared and used in decision-making with less difficulty than with an assortment of general purpose tools.</p>
+                
+                <p>The platform is designed to:</p>
+                
+                <ul>
+                    <li>Standardize data collection protocols across monitoring programs</li>
+                    <li>Streamline field data entry with mobile applications</li>
+                    <li>Provide powerful visualization and analysis tools</li>
+                    <li>Enable easy data sharing between researchers and managers</li>
+                    <li>Support long-term ecological monitoring initiatives</li>
+                    <li>Integrate diverse data types including biological surveys, water quality, and habitat assessments</li>
+                </ul>
+                
+                <p>SeaMonitor represents our commitment to making marine ecological data more accessible and useful for conservation and management decisions.</p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2026 McClintock Lab. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            const navLinks = document.getElementById('navLinks');
+            navLinks.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>
